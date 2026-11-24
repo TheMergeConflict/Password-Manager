@@ -120,35 +120,38 @@ listDomains() {
 
 # cli entry
 
-cmd="${1:-}"
-shift || true
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
 
-case "$cmd" in
-    init)
-        init_db
-        ;;
-    add-user)
-        # Usage: ./db.sh add-user <username> <salt> <authHash> [epoch]
-        addUser "$1" "$2" "$3" "${4:-}"
-        ;;
-    get-user)
-        # Usage: ./db.sh get-user <username>
-        getUser "$1"
-        ;;
-    add-pass)
-        # Usage: ./db.sh add-pass <username> <domain> <encPass> <iv> [epoch]
-        addPassword "$1" "$2" "$3" "$4" "${5:-}"
-        ;;
-    get-pass)
-        # Usage: ./db.sh get-pass <username> <domain>
-        getPassword "$1" "$2"
-        ;;
-    list-domains)
-        # Usage: ./db.sh list-domains <username>
-        listDomains "$1"
-        ;;
-    *)
-        echo "Usage: $0 {init|add-user|get-user|add-pass|get-pass|list-domains}" >&2
-        exit 1
-        ;;
-esac
+    cmd="${1:-}"
+    shift || true
+
+    case "$cmd" in
+        init)
+            init_db
+            ;;
+        add-user)
+            # Usage: ./db.sh add-user <username> <salt> <authHash> [epoch]
+            addUser "$1" "$2" "$3" "${4:-}"
+            ;;
+        get-user)
+            # Usage: ./db.sh get-user <username>
+            getUser "$1"
+            ;;
+        add-pass)
+            # Usage: ./db.sh add-pass <username> <domain> <encPass> <iv> [epoch]
+            addPassword "$1" "$2" "$3" "$4" "${5:-}"
+            ;;
+        get-pass)
+            # Usage: ./db.sh get-pass <username> <domain>
+            getPassword "$1" "$2"
+            ;;
+        list-domains)
+            # Usage: ./db.sh list-domains <username>
+            listDomains "$1"
+            ;;
+        *)
+            echo "Usage: $0 {init|add-user|get-user|add-pass|get-pass|list-domains}" >&2
+            exit 1
+            ;;
+    esac
+fi 
