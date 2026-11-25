@@ -4,7 +4,7 @@
 . ./database.sh
 . ./encryption.sh
 
-# Initialize database if your database.sh defines init_db (adjust name to match yours)
+# Initialize database if your database.sh defines init_db 
 init_db
 
 Usnm=""
