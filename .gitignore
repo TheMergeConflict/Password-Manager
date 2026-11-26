@@ -1,0 +1,8 @@
+# sqlite3
+*.db
+*.db-*
+
+# os
+*.swp
+*~
+.DS_Store
